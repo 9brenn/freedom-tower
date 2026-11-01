@@ -1,0 +1,45 @@
+KONTROLA TECHNICZNA PACZKI RC1
+
+Wejście: 2 części 7z, 44 108 308 bajtów łącznie; CRC archiwum 7z poprawne.
+Wewnętrzny RAR rozpakowano bez błędów odczytu/dekompresji.
+123 pliki danych poza Lua/projektem: 122 odczytano; 1 wadliwy XML scenariuszy.
+Binarne zasoby GTA: brak błędów odczytu CodeWalker.
+
+Wynik: dlc.rpf z wewnętrznym freedomtower.rpf, 114 plików w mapowym RPF.
+41 YMAP, 40 YDR, 1 YDD, 15 YTYP, 14 YBN, 2 YND, 1 scalony YMF.
+Wszystkie modele YDR/YDD i kolizje YBN zachowały oryginalne bajty.
+Rejestracja DLC: 1 archiwum RPF_FILE i 15 DLC_ITYP_REQUEST; ścieżki istnieją.
+Scalony _manifest.ymf: 17 wpisów map i 9 wpisów wnętrz.
+9 umieszczonych MLO: 4 apartamenty, 3 biura, hol i garaż.
+
+Zmiany:
+- cztery odwołania MLO do kolizji vanilla skierowano do dostarczonych YBN;
+- granice ośmiu własnych MLO obliczono z poprawnych granic pomieszczeń;
+- ujednolicono niespójne nazwy CMapTypes i usunięto zdublowaną definicję shell;
+- zachowano zależności oryginalnych YMF, dodano wykryte własne zależności;
+- w biurach wybrano istniejące zgodne zestawy krzeseł/dekoracji;
+- dodano metadane DLC Single Player i opcjonalny loader MP Maps.
+
+Porównanie XML zmian z niezależnym odczytem ich binarnego zapisu: 0 różnic
+semantycznych. Odczyt obu zagnieżdżonych RPF niezależnym parserem CodeWalker:
+RPF_CHECK_OK. Własny odczyt wszystkich wpisów RPF zgadza się bajt w bajt
+z danymi przed pakowaniem. Kompilacja opcjonalnego loadera: 0 błędów/ostrzeżeń.
+Sprawdzono indeksy portali i przypisań do pomieszczeń, brak duplikatów
+archetypów oraz zgodność wybranych entity sets.
+
+Nie instalowano FiveM fxmanifest.lua, pliku projektu 1.cwproj ani wadliwego
+sp_manifest_1604.ymt. Trzy pliki scenariuszy NPC (downtown.ymt,
+downtown_construction_site.ymt, pillbox_hill.ymt) pozostają poza paczką DLC;
+nie zweryfikowano ich integracji z aktualną globalną bazą scenariuszy SP.
+Sześć oryginalnych manifestów YMF scalono w jeden _manifest.ymf.
+
+Znane ograniczenia: brak gtxd.meta w źródle; zewnętrzne tekstury i modele
+GTA Online muszą pochodzić z gry; wymagany wariant MP Maps w Story Mode.
+Bez testu w uruchomionej grze nie potwierdzono wyglądu, kolizji podczas
+poruszania się, stabilności ani zgodności z innymi modami i misjami.
+
+Narzędzia: CodeWalker.Core, commit 485d56bec00262ed7fa472261cce7bbc6202b96e;
+własny writer RPF7 OPEN sprawdzony parserem CodeWalker; py7zr/libarchive.
+Odniesienia: https://github.com/dexyfex/CodeWalker
+https://github.com/DurtyFree/gta-v-data-dumps
+https://github.com/citizenfx/natives
