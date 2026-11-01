@@ -7,7 +7,7 @@ import xml.etree.ElementTree as E
 BASE=Path('/workspace/conversion')
 SRC=BASE/'source/extracted/Robbbs3D - freedom_tower/stream'
 XML=BASE/'reports/xml'
-BUILD=Path(os.environ.get('FREEDOM_TOWER_BUILD_DIR',str(BASE/'rc2')))
+BUILD=Path(os.environ.get('FREEDOM_TOWER_BUILD_DIR',str(BASE/'rc3')))
 BUILD.mkdir(parents=True,exist_ok=True)
 STAGE=BUILD/'stage';STAGE.mkdir(exist_ok=True)
 PATCH=BUILD/'patched-xml';PATCH.mkdir(exist_ok=True)
@@ -34,6 +34,11 @@ for f in SRC.iterdir():
 # Path nodes are registered separately; scenario source is retained separately, not
 # installed as a global legacy-1604 manifest over a modern game configuration.
 for f in SRC.glob('*.ynd'):shutil.copy2(f,STAGE/f.name)
+# These visual drawables have neither an embedded Bound nor a matching YBN.
+# The tower/hall retain their separate world/MLO collision files.
+DANGLING_CUSTOM_PHYSICS={
+ 'onewtc', 'robbbs_wtc_lobby_ascensori', 'robbbs_wtc_lobby_mirror',
+ 'robbbs_wtc_lobby_luci', 'robbbs_wtc_lobby_quadri', 'robbbs_wtc_impexp_roundlights'}
 physics={
  'robbbs_wtc_appartment_01_dlc':'robbbs_wtc_appartment_01_dlc',
  'robbbs_wtc_appartment_03_dlc':'robbbs_wtc_appartment_03_dlc',
@@ -53,6 +58,11 @@ for f in sorted(XML.glob('*.ytyp.xml')):
   if name=='robbbs_wtc_hall_prop.ytyp' and an=='robbbs_wtc_hall_shell':
    root.find('archetypes').remove(a);changed=True
    changes.append({'file':name,'field':'duplicate archetype','removed':an});continue
+  if an in DANGLING_CUSTOM_PHYSICS:
+   assert a.findtext('physicsDictionary')==an
+   assert not (SRC/(an+'.ybn')).exists()
+   a.find('physicsDictionary').text=None;changed=True
+   changes.append({'file':name,'field':an+'.physicsDictionary','before':an,'after':None,'reason':'no matching YBN or embedded Bound; separate world/MLO collisions retained'})
   archindex[h(an)]=(name[:-5],a)
   if a.get('type')=='CMloArchetypeDef':
    if an in physics:

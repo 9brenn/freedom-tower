@@ -1,41 +1,51 @@
-# Freedom Tower — GTA V Legacy RC2
+# Freedom Tower — GTA V Legacy RC3 MAP
 
-**RC1 ma zgłoszony crash podczas ładowania Story Mode w Legacy 1.0.3889.0.**
-RC2 usuwa zbędną kopię stockowych definicji biura Agency oraz ich ponowną
-rejestrację. Przyczyna awarii i skuteczność tej zmiany wymagają testu w grze.
+**RC1 i RC2 zamykały Story Mode w zgłoszonej instalacji Legacy 1.0.3889.0.**
+RC3 przebudowuje sposób rejestracji dodatku według układu map Single Player.
+Nie ma jeszcze potwierdzenia uruchomienia RC3 w grze.
 
-[Pobierz RC2 — kandydat poprawki zgodności, ZIP 42 MB](https://github.com/9brenn/freedom-tower/raw/refs/heads/main/output/Freedom_Tower_GTA_V_Legacy_RC2.zip)
+[Pobierz RC3 MAP — ZIP 42 MB](https://github.com/9brenn/freedom-tower/raw/refs/heads/main/output/Freedom_Tower_GTA_V_Legacy_RC3_MAP.zip)
 
-[Instrukcja instalacji i testu](docs/INSTALACJA_PL.txt) · [Zmiany RC2](docs/RC2_ZMIANY.txt) · [Raport kontroli](docs/RAPORT.txt)
+[Instalacja i próba uruchomienia](docs/INSTALACJA_PL.txt) · [Zmiany RC3 i wyniki](docs/RC3_ZMIANY.txt) · [Podstawa techniczna](docs/RUNTIME_REFERENCES.md)
 
-Najpierw sprawdź wczytanie Story Mode bez wpisu `freedomtower` w `dlclist.xml`.
-Następnie zamknij grę, podmień cały `dlc.rpf` na RC2, przywróć jeden wpis i
-wykonaj próbę **bez loadera DLL i bez aktywowania MP Maps**.
-Jeśli gra się wczyta, dopiero potem sprawdź właściwy wygląd z MP Maps.
-Jeśli pełne RC2 nadal zamyka grę, można sprawdzić samą aktywację dodatku:
+RC3 używa `EXTRACONTENT_LEVEL_PACK`, `GROUP_UPDATE_STREAMING` i osobnego
+archiwum `CONTENTS_DLC_MAP_DATA`. Usunięto wymuszone żądania YTYP przy starcie,
+które występowały równocześnie z żądaniami manifestu. Kod FiveM uzgadnia te dwa
+mechanizmy; zwykły Single Player nie zapewnia tych napraw. Nie oznacza to
+jeszcze ustalenia dokładnej przyczyny crasha z instalacji użytkownika.
 
-[Mała paczka diagnostyczna — bez budynku](https://github.com/9brenn/freedom-tower/raw/refs/heads/main/output/Freedom_Tower_TEST_LADOWANIA.zip)
+Zachowano wszystkie modele i rozmieszczenie 9 wnętrz: hol, garaż,
+4 apartamenty i 3 biura. W dwóch definicjach wyczyszczono sześć odwołań do
+nieistniejących własnych physicsDictionary; kolizje wieżowca i wnętrz zachowano.
+Biuro Agency korzysta z oryginalnego mpsecurity gry.
 
-Instrukcja próby i przywrócenia pełnego DLC jest w `TEST_PL.txt` tej paczki.
-Nie instaluj obydwu paczek jednocześnie; podmieniają ten sam `dlc.rpf`.
-RC1 pozostaje w `output/` wyłącznie do porównania z wcześniejszą wersją.
+Zamknij grę i podmień **cały** plik `mods/update/x64/dlcpacks/freedomtower/dlc.rpf`.
+Zachowaj jeden wpis `<Item>dlcpacks:/freedomtower/</Item>` w aktywnym dlclist.xml.
+Sprawdź ASI Loader i OpenIV.asi w ASI Manager. Pierwszą próbę uruchomienia
+wykonaj bez opcjonalnego loadera DLL i bez zmieniania innych modów/gameconfig.
 
-Konwersja dostarczonego zasobu Robbbs3D do add-on DLC zachowuje budynek, plac
-oraz 9 rozmieszczeń wnętrz, bez systemu wind. Własne modele i mapy rozmieszczeń
-nie zmieniły się między RC1 a RC2. Biuro Agency korzysta z oryginalnego mpsecurity.
+Do właściwego widoku budynku po wczytaniu Story Mode wymagane jest MP Maps,
+włączone trainerem lub opcjonalnym loaderem. Wymagane oryginalne zasoby DLC
+Legacy 2545+ (m.in. mpapartment, mpexecutive, mpsecurity). Brak skryptu wind;
+do oględzin wyższych pięter można użyć noclip. Szczegóły są w instrukcji.
 
-Do właściwego wyglądu wymagane są MP Maps w Story Mode i oryginalne DLC gry,
-w tym mpsecurity (Legacy build 2545+). Opcjonalny helper wymaga Script Hook V
-i ScriptHookVDotNet v3.7.0-nightly.198 lub zgodnej nowszej wersji API v3.
-Na czas diagnozy ładowania pozostaw helper wyłączony.
+Jeśli nadal występuje awaria, do rozróżnienia instalacji/ASI od pełnych zasobów
+potrzebny jest wynik małej paczki bez budynku:
 
-Nie wykonano testu w uruchomionym GTA V. Brakuje źródłowego `gtxd.meta`;
-nie odtwarzano go przez zgadywanie. Nie instalowano wadliwego globalnego
-manifestu scenariuszy 1604 ani jego trzech regionów NPC.
+[Pobierz TEST_LADOWANIA — około 2 KB](https://github.com/9brenn/freedom-tower/raw/refs/heads/main/output/Freedom_Tower_TEST_LADOWANIA.zip)
 
-Narzędzia w `tools/` dokumentują lokalny proces przygotowania i budowy RPF.
-Korzystają z wejścia/XML i narzędzi CodeWalker zachowanych pod
+Instrukcja podmiany i przywrócenia pełnego dodatku znajduje się w tym ZIP.
+Nie instaluj jej obok pełnej paczki. Dotychczasowe RC1/RC2 pozostają w
+`output/` wyłącznie jako materiał porównawczy, z potwierdzonym zgłoszeniem awarii.
+
+Kontrole RC3: ponowny odczyt RPF i zasobów, niezależny dekoder układu,
+porównanie wszystkich plików z RC2 oraz kontrola danych geometrii i zależności.
+Nie wykonano testu w GTA V. Nie potwierdzono stabilności, wyglądu, ruchu NPC ani
+zgodności z innymi modami. Brakuje źródłowego `gtxd.meta`; nie zgadywano jego
+zawartości. Wadliwy manifest scenariuszy 1604 i trzy regiony NPC są poza paczką.
+
+Narzędzia w `tools/` korzystają z wejścia/XML i CodeWalker zachowanych pod
 `/workspace/conversion` oraz `/workspace/tools/CodeWalker` w tym środowisku.
-Domyślny katalog wyników to `/workspace/conversion/rc2`, zmieniany przez
-`FREEDOM_TOWER_BUILD_DIR`. Nie jest to samodzielny konwerter dowolnych zasobów.
-Oryginalne pliki źródłowe pozostały niezmienione poza repozytorium.
+Domyślny katalog wyników to `/workspace/conversion/rc3`, zmieniany przez
+`FREEDOM_TOWER_BUILD_DIR`. Oryginalne pliki wejściowe pozostają niezmienione.
+`verify_rc2.py` i dokumenty oznaczone RC2 są historycznym porównaniem RC1–RC2.

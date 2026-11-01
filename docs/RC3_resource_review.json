@@ -1,0 +1,25 @@
+{
+  "rc2_vs_rc3_same_resource_names": true,
+  "changed_resources": [
+    "one_wtc.ytyp",
+    "robbbs_wtc_hall_prop.ytyp"
+  ],
+  "only_semantic_field_changes": [
+    "onewtc.physicsDictionary cleared",
+    "robbbs_wtc_impexp_roundlights.physicsDictionary cleared",
+    "robbbs_wtc_lobby_ascensori.physicsDictionary cleared",
+    "robbbs_wtc_lobby_luci.physicsDictionary cleared",
+    "robbbs_wtc_lobby_mirror.physicsDictionary cleared",
+    "robbbs_wtc_lobby_quadri.physicsDictionary cleared"
+  ],
+  "all_41_ymap_byte_identical": true,
+  "mlo_placements": 9,
+  "all_ydr_ydd_ybn_ynd_byte_identical": true,
+  "manifest_byte_identical": true,
+  "nested_archives": {
+    "x64/levels/gta5/freedomtower.rpf": 57,
+    "x64/levels/gta5/freedomtower_metadata.rpf": 56
+  },
+  "package_extracted_union_equals_stage": true,
+  "game_runtime_tested": false
+}

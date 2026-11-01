@@ -1,0 +1,28 @@
+{
+  "checked_actual_rc3_rpf": true,
+  "independent_raw_toc_reader": true,
+  "outer_files": 4,
+  "asset_files": 57,
+  "metadata_files": 56,
+  "archives_disjoint": true,
+  "streamed_ymaps": 41,
+  "streamed_ytyps": 14,
+  "direct_ytyp_requests": 0,
+  "metadata_content_flag": "CONTENTS_DLC_MAP_DATA",
+  "map_lifecycle": "GROUP_UPDATE_STREAMING",
+  "dangling_changesets": false,
+  "startup_forced_resources": false,
+  "matches_reference_adapted_templates_bytewise": true,
+  "unchanged_resource_names_vs_rc2": true,
+  "changed_resource_bytes_vs_rc2": [
+    "one_wtc.ytyp",
+    "robbbs_wtc_hall_prop.ytyp"
+  ],
+  "all_other_111_resources_byte_identical": true,
+  "map_content_enum_source": "CodeWalker.Core/GameFiles/MetaTypes/PsoTypes.cs:14838, enum value 8",
+  "reference_template": "FiftyShadesOfBlue/DlcPackCreator a12c16b2344894738bfff2594b120668d4be6ecb, GenerateMetaData.cs",
+  "retained_order": 10000,
+  "reference_order": 2,
+  "game_runtime_tested": false,
+  "runtime_evidence": "RC1 and RC2 user-confirmed crash; RC3 has no game result yet"
+}

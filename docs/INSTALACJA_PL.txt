@@ -1,96 +1,67 @@
-FREEDOM TOWER — GTA V LEGACY — RC2, KANDYDAT POPRAWKI ZGODNOŚCI
-Model i wnętrza: Robbbs3D. Konwersja otrzymanego archiwum do add-on DLC.
+FREEDOM TOWER — GTA V LEGACY — RC3 MAP
+Budynek i wnętrza: Robbbs3D. Konwersja przekazanego archiwum.
 
-Zawartość: wieżowiec, plac, hol, garaż, 4 apartamenty i 3 biura.
-Brak systemu jeżdżących wind. Modele wind w holu zostały zachowane.
+RC1 i RC2 zamykały grę na zgłoszonej instalacji Legacy 1.0.3889.0.
+RC3 przebudowuje rejestrację dodatku na pakiet mapowy Single Player.
+Sprawdzono strukturę i zasoby; uruchomienie w GTA V pozostaje do sprawdzenia.
 
-0. JEŚLI GRA ZAMYKAŁA SIĘ NA RC1
-Nie potwierdzono jeszcze przyczyny awarii. RC2 usuwa zbędną kopię stockowego
-biura Agency i jego ponowną rejestrację. Biuro nadal korzysta z mpsecurity gry.
-Najpierw usuń wpis freedomtower i sprawdź, czy Story Mode znów się wczytuje.
-Następnie zamknij grę, podmień cały plik dlc.rpf na RC2 i przywróć jeden wpis.
-Pierwszą próbę uruchomienia wykonaj bez FreedomTowerLegacy.dll i bez włączania
-map MP. To próba ładowania DLC; właściwy widok budynku wymaga punktu 3.
-Jeżeli Story Mode się wczyta, dopiero wtedy sprawdź budynek z włączonym MP Maps.
-Jeżeli nadal się zamyka, użyj oddzielnej małej paczki diagnostycznej i przekaż
-wynik prób. Nie zmieniaj przy tym gameconfig, limitów pamięci ani innych modów.
+INSTALACJA ZAMIAST RC1/RC2
+1. Zamknij grę. Zachowaj kopię starego dlc.rpf poza katalogiem dlcpacks.
+2. W OpenIV sprawdź Tools -> ASI Manager: ASI Loader i OpenIV.asi muszą być
+   zainstalowane. Sam edytor OpenIV nie zastępuje działającego OpenIV.asi.
+   Paczki RPF w formacie OPEN wymagają tej wtyczki podczas uruchamiania gry.
+3. Podmień CAŁY plik:
+   GTA V\mods\update\x64\dlcpacks\freedomtower\dlc.rpf
+   na plik z tej paczki. Nie podmieniaj tylko plików wewnętrznego archiwum.
+4. W OpenIV otwórz:
+   mods\update\update.rpf\common\data\dlclist.xml
+   Pozostaw dokładnie jeden wpis:
+   <Item>dlcpacks:/freedomtower/</Item>
+   Zachowaj pozostałe wpisy. Nie twórz osobnych wpisów RC1/RC2/RC3.
+5. Pierwszą próbę uruchomienia wykonaj bez FreedomTowerLegacy.dll oraz bez
+   FreedomTowerLegacy.3.cs w scripts. Nie zmieniaj równocześnie innych modów
+   ani gameconfig.xml. Sprawdź samo wczytanie Story Mode.
 
-1. WYMAGANIA
-- GTA V Legacy z zainstalowanymi oryginalnymi DLC co najmniej do The Contract
-  (build 2545); zalecana aktualna wersja Legacy. Nie GTA V Enhanced.
-- OpenIV oraz działające OpenIV.asi i ASI Loader.
-- Włączenie MP Maps w trybie fabularnym: jeden z dwóch wariantów z punktu 3.
-  Wnętrza korzystają z zasobów m.in. mpapartment, mpexecutive i mpsecurity.
+PO UDANYM WCZYTANIU — WŁAŚCIWY WARIANT MAPY
+Źródło FiveM zastępuje mapy hei_dt1_* i vw_*. Aby nie pozostał stary plac
+budowy i jego kolizje, w Story Mode wymagany jest wariant MP Maps.
+Włącz go posiadanym trainerem, albo użyj opcjonalnego loadera opisanego w
+OPCJONALNY_LOADER/README-helper.txt. Wybierz jeden sposób. MP Maps w Story
+Mode nie łączy gry z GTA Online; przeładowanie mapy może chwilę potrwać.
+Loader wymaga Script Hook V zgodnego z Twoim GTA i zgodnego ScriptHookVDotNet
+API v3. Nie instaluj jednocześnie DLL i jego źródła .3.cs.
 
-2. INSTALACJA DLC
-Zamknij grę. W OpenIV włącz tryb edycji i korzystaj z katalogu mods.
-Skopiuj folder freedomtower do:
-  GTA V\mods\update\x64\dlcpacks\
-Wynikowa ścieżka ma być dokładnie:
-  GTA V\mods\update\x64\dlcpacks\freedomtower\dlc.rpf
+BUDYNEK I WNĘTRZA
+Lokalizacja: Pillbox Hill, teren budowy Mile High Club.
+Podstawa orientacyjnie: X=-148, Y=-980, Z=29.
+Zachowano wieżowiec, plac, hol, garaż, 4 apartamenty i 3 biura.
+Biuro Agency korzysta z oryginalnych zasobów mpsecurity gry, pozostałe
+wnętrza mają własne definicje i dostarczone pliki kolizji.
+Wymagany Legacy z oryginalnymi DLC co najmniej do The Contract (2545+).
+W archiwum nie było skryptu działających wind. Ich modele są zachowane.
+Do oględzin pięter użyj noclip/freecam. DOKUMENTACJA zawiera początki MLO;
+nie są to potwierdzone punkty bezpiecznego spawnu. Piętra leżą na Z~299–430.
 
-Otwórz w OpenIV:
-  mods\update\update.rpf\common\data\dlclist.xml
-Jeżeli edytujesz oryginalne update.rpf, najpierw użyj Copy to mods folder.
-Przed zamykającym </Paths> dodaj jeden wpis:
-  <Item>dlcpacks:/freedomtower/</Item>
-Zachowaj wszystkie wcześniejsze wpisy. Nie podmieniaj całego dlclist.xml.
+JEŚLI NADAL ZAMYKA GRĘ
+Usuń wpis freedomtower, żeby odzyskać wczytywanie gry. Sprawdź oddzielną,
+małą paczkę Freedom_Tower_TEST_LADOWANIA.zip z repozytorium. Ona celowo
+nie zawiera budynku i sprawdza samą aktywację dodatku.
+Podaj wynik testu RC3 oraz testu małej paczki. Przygotuj do przesłania:
+- użyty dlclist.xml wyeksportowany z aktywnego update.rpf;
+- OpenIV.log z katalogu gry, jeśli powstaje;
+- ScriptHookV.log, jeśli Script Hook V jest zainstalowany.
+Te wyniki są potrzebne do rozróżnienia instalacji ASI, limitów gry i zasobów.
+Nie zmieniaj losowo limitów pamięci ani plików gameconfig pomiędzy próbami.
 
-3. WŁĄCZENIE WŁAŚCIWEGO WARIANTU MAPY — WYMAGANE
-Źródło FiveM usuwa plac budowy poprzez mapy hei_dt1_* i vw_* z GTA Online.
-Bez trybu MP Maps mogą pozostać stare budynki, dźwigi lub kolizje.
-Tryb MP Maps w Story Mode nie oznacza połączenia z GTA Online.
+GRANICE WERYFIKACJI
+Nie ma tutaj uruchomionej gry GTA V. Odczyt zasobów i prawidłowa struktura
+nie potwierdzają jeszcze stabilności, wyglądu, kolizji w ruchu ani zgodności
+z innymi modami. Oryginał nie zawiera deklarowanego gtxd.meta; nie zgadywano
+jego treści. Część tekstur pochodzi z oryginalnych zasobów gry i wymaga testu.
+Wadliwy globalny manifest scenariuszy 1604 i trzy regiony NPC pozostają
+poza dodatkiem; ruch NPC w przebudowanej okolicy też wymaga sprawdzenia.
+Lista testów wszystkich wnętrz jest w DOKUMENTACJA/TEST_W_GRZE.txt.
 
-Wariant A — automatyczny loader:
-Zainstaluj zgodny z Twoją wersją gry Script Hook V i ScriptHookVDotNet
-v3.7.0-nightly.198 lub zgodną nowszą wersję API v3.
-Oficjalne wydanie użyte do kompilacji loadera:
-https://github.com/scripthookvdotnet/scripthookvdotnet-nightly/releases/tag/v3.7.0-nightly.198
-Skopiuj OPCJONALNY_LOADER\FreedomTowerLegacy.dll do GTA V\scripts\.
-Nie kopiuj równocześnie źródła FreedomTowerLegacy.3.cs do scripts.
-Loader jednorazowo po wczytaniu gry włącza MP Maps i żąda map budynku.
-Nie dodaje wind ani teleportacji. Przeładowanie map może chwilę potrwać.
-
-Wariant B — posiadany trainer:
-Jeśli Twój trainer ma opcję Enable MP Maps, włącz ją po wczytaniu Story Mode.
-Wtedy loader DLL nie jest potrzebny. Użyj jednego sposobu aktywacji map.
-
-4. GDZIE JEST BUDYNEK
-Pillbox Hill, teren budowy Mile High Club. Orientacyjny punkt u podstawy:
-  X=-148, Y=-980, Z=29
-Piętra są na wysokościach ok. 299–430 metrów. Bez skryptu wind nie ma
-zapewnionej komunikacji między piętrami. Do obejrzenia wszystkich wnętrz
-użyj noclip/freecam trenera. Dokładne początki wnętrz są w DOKUMENTACJA.
-To techniczne punkty odniesienia, nie sprawdzone miejsca bezpiecznego spawnu.
-
-5. TEST W TWOJEJ GRZE — KONIECZNY DO POTWIERDZENIA DZIAŁANIA
-Sprawdź wieżowiec z bliska i daleka, dzień/noc, hol i garaż oraz każde piętro.
-W każdym wnętrzu sprawdź podłogę, ściany, tekstury, meble i widoczność
-podczas przechodzenia między pomieszczeniami. Wróć po oddaleniu się i po
-ponownym uruchomieniu gry. Lista kontrolna znajduje się w DOKUMENTACJA.
-Inne mody zmieniające tę samą okolicę mogą kolidować z tym dodatkiem.
-Tryb MP Maps zmienia wariant mapy całej sesji; zgodność z misjami fabularnymi
-nie została tu sprawdzona.
-
-6. CO ZOSTAŁO SPRAWDZONE, A CZEGO NIE WIEMY
-Archiwum wejściowe jest nieuszkodzone. Modele i dane map zostały odczytane
-narzędziami CodeWalker. Zbudowane oba archiwa RPF przeszły ponowny odczyt;
-wszystkie ich pliki zgadzają się z przygotowanymi danymi. Zachowano wszystkie
-modele i wszystkie 9 umieszczonych wnętrz. Szczegóły są w raporcie.
-
-Oryginał NIE jest kompletnym samodzielnym zasobem: brakuje deklarowanego
-pliku gtxd.meta. Nie wymyślano jego zawartości. Znaczna część tekstur jest
-osadzona w modelach; pozostałe odwołują się do zasobów gry. Pełnej poprawności
-tekstur i ich dziedziczenia nie można potwierdzić bez instalacji GTA V.
-Oryginalny sp_manifest_1604.ymt jest błędnym XML-em ze ścieżkami FiveM.
-Nie instalowano go ani trzech powiązanych plików scenariuszy NPC jako globalnej
-konfiguracji współczesnego GTA. Ruch NPC w przebudowanej okolicy wymaga testu.
-Zachowano obydwa dostarczone pliki węzłów drogowych YND.
-
-W tym środowisku nie ma uruchomionej gry GTA V. Paczka RC2 jest przygotowana
-do testu w grze; nie stanowi potwierdzenia bezbłędnego działania w 100%.
-
-7. ODINSTALOWANIE
-Usuń wpis freedomtower z dlclist.xml i folder freedomtower z dlcpacks.
-Jeśli używasz loadera, usuń FreedomTowerLegacy.dll z scripts. Zamknij i uruchom
-ponownie grę, aby przywrócić domyślny wariant mapy. Nie usuwaj innych modów.
+ODINSTALOWANIE
+Usuń wpis freedomtower z dlclist.xml i jego katalog z dlcpacks.
+Usuń opcjonalny loader, jeśli go dodawałeś. Zamknij i uruchom grę ponownie.

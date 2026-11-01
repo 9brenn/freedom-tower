@@ -1,0 +1,37 @@
+RC3 — PRZEBUDOWA PAKIETU MAPOWEGO
+
+Nowy układ:
+- EXTRACONTENT_LEVEL_PACK, isLevelPack=true;
+- GROUP_UPDATE_STREAMING zamiast wymuszania definicji w GROUP_STARTUP;
+- freedomtower.rpf: 40 YDR, 1 YDD, 14 YBN, 2 YND = 57 plików;
+- freedomtower_metadata.rpf: 41 YMAP, 14 YTYP i manifest = 56 plików;
+- archiwum metadanych oznaczone CONTENTS_DLC_MAP_DATA;
+- brak bezpośrednich DLC_ITYP_REQUEST dla plików zarządzanych przez manifest.
+
+Uzasadnienie: struktura map Dlc Pack Creator oraz kod natywny FiveM,
+który po wczytaniu manifestu usuwa wcześniejsze wymuszone żądania YTYP.
+Single Player nie dostarcza tego mechanizmu naprawczego FiveM.
+To konkretna różnica sposobu ładowania; bez testu w grze nie ustala dokładnej
+przyczyny zgłoszonej awarii ani nie dowodzi jej usunięcia w RC3.
+
+Dane zasobów:
+- wszystkie 113 nazw zasobów RC2 zachowane;
+- wszystkie 41 YMAP, modele, kolizje i węzły drogowe zachowane bajtowo;
+- dziewięć rozmieszczeń MLO zachowanych;
+- w dwóch YTYP wyczyszczono dokładnie sześć martwych physicsDictionary:
+  onewtc, lobby_ascensori, lobby_mirror, lobby_luci, lobby_quadri,
+  impexp_roundlights (z oryginalnymi prefiksami robbbs_wtc_).
+Te drawables nie mają własnego YBN ani osadzonego Bound. Istniejące kolizje
+world-space wieżowca i holu MLO zachowano bez zmian.
+
+Weryfikacja:
+- ponowny odczyt trzech RPF, zasobów i kompletności ścieżek;
+- niezależny dekoder RPF potwierdza rozdzielenie 57/56 zasobów;
+- binarny ponowny eksport potwierdza wyłącznie sześć zmian physicsDictionary;
+- 42 drawables/390 geometrii: poprawne indeksy, stride, shader IDs i liczniki;
+- oryginalne oraz RC2 YMAP spełniają dwa znane ograniczenia poprawiane przez
+  FiveM: flaga wnętrza i numStreetLights <= liczba pozycji; nie zmieniano ich;
+- nie wykryto lokalnych cykli zależności YTYP ani hierarchii LOD.
+
+Test w uruchomionym GTA V: NIE WYKONANY. RC1/RC2: crash potwierdzony przez
+użytkownika. RC3: brak wyniku testu w grze w chwili przygotowania paczki.

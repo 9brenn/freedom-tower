@@ -5,138 +5,32 @@
   <includedDataFiles />
   <dataFiles>
     <Item>
-      <filename>dlc_freedomtower:/x64/levels/gta5/freedomtower.rpf</filename>
+      <filename>dlc_freedomtower:/%PLATFORM%/levels/gta5/freedomtower.rpf</filename>
       <fileType>RPF_FILE</fileType>
-      <locked value="true" />
-      <disabled value="true" />
-      <persistent value="true" />
-      <overlay value="true" />
+      <overlay value="false" />
+      <disabled value="false" />
+      <persistent value="false" />
     </Item>
     <Item>
-      <filename>dlc_freedomtower:/x64/levels/gta5/freedomtower.rpf/one_wtc.ytyp</filename>
-      <fileType>DLC_ITYP_REQUEST</fileType>
-      <locked value="true" />
-      <disabled value="true" />
-      <persistent value="true" />
-    </Item>
-    <Item>
-      <filename>dlc_freedomtower:/x64/levels/gta5/freedomtower.rpf/one_wtc_acqua.ytyp</filename>
-      <fileType>DLC_ITYP_REQUEST</fileType>
-      <locked value="true" />
-      <disabled value="true" />
-      <persistent value="true" />
-    </Item>
-    <Item>
-      <filename>dlc_freedomtower:/x64/levels/gta5/freedomtower.rpf/one_wtc_plaza.ytyp</filename>
-      <fileType>DLC_ITYP_REQUEST</fileType>
-      <locked value="true" />
-      <disabled value="true" />
-      <persistent value="true" />
-    </Item>
-    <Item>
-      <filename>dlc_freedomtower:/x64/levels/gta5/freedomtower.rpf/robbbs_int_office_03c_dlc.ytyp</filename>
-      <fileType>DLC_ITYP_REQUEST</fileType>
-      <locked value="true" />
-      <disabled value="true" />
-      <persistent value="true" />
-    </Item>
-    <Item>
-      <filename>dlc_freedomtower:/x64/levels/gta5/freedomtower.rpf/robbbs_wtc_appartment_01_dlc.ytyp</filename>
-      <fileType>DLC_ITYP_REQUEST</fileType>
-      <locked value="true" />
-      <disabled value="true" />
-      <persistent value="true" />
-    </Item>
-    <Item>
-      <filename>dlc_freedomtower:/x64/levels/gta5/freedomtower.rpf/robbbs_wtc_appartment_02_dlc.ytyp</filename>
-      <fileType>DLC_ITYP_REQUEST</fileType>
-      <locked value="true" />
-      <disabled value="true" />
-      <persistent value="true" />
-    </Item>
-    <Item>
-      <filename>dlc_freedomtower:/x64/levels/gta5/freedomtower.rpf/robbbs_wtc_appartment_03_dlc.ytyp</filename>
-      <fileType>DLC_ITYP_REQUEST</fileType>
-      <locked value="true" />
-      <disabled value="true" />
-      <persistent value="true" />
-    </Item>
-    <Item>
-      <filename>dlc_freedomtower:/x64/levels/gta5/freedomtower.rpf/robbbs_wtc_appartment_04_dlc.ytyp</filename>
-      <fileType>DLC_ITYP_REQUEST</fileType>
-      <locked value="true" />
-      <disabled value="true" />
-      <persistent value="true" />
-    </Item>
-    <Item>
-      <filename>dlc_freedomtower:/x64/levels/gta5/freedomtower.rpf/robbbs_wtc_dt1_11_interior_0_dt1_11_carpark.ytyp</filename>
-      <fileType>DLC_ITYP_REQUEST</fileType>
-      <locked value="true" />
-      <disabled value="true" />
-      <persistent value="true" />
-    </Item>
-    <Item>
-      <filename>dlc_freedomtower:/x64/levels/gta5/freedomtower.rpf/robbbs_wtc_emissive.ytyp</filename>
-      <fileType>DLC_ITYP_REQUEST</fileType>
-      <locked value="true" />
-      <disabled value="true" />
-      <persistent value="true" />
-    </Item>
-    <Item>
-      <filename>dlc_freedomtower:/x64/levels/gta5/freedomtower.rpf/robbbs_wtc_garageprop.ytyp</filename>
-      <fileType>DLC_ITYP_REQUEST</fileType>
-      <locked value="true" />
-      <disabled value="true" />
-      <persistent value="true" />
-    </Item>
-    <Item>
-      <filename>dlc_freedomtower:/x64/levels/gta5/freedomtower.rpf/robbbs_wtc_hall_mlo.ytyp</filename>
-      <fileType>DLC_ITYP_REQUEST</fileType>
-      <locked value="true" />
-      <disabled value="true" />
-      <persistent value="true" />
-    </Item>
-    <Item>
-      <filename>dlc_freedomtower:/x64/levels/gta5/freedomtower.rpf/robbbs_wtc_hall_prop.ytyp</filename>
-      <fileType>DLC_ITYP_REQUEST</fileType>
-      <locked value="true" />
-      <disabled value="true" />
-      <persistent value="true" />
-    </Item>
-    <Item>
-      <filename>dlc_freedomtower:/x64/levels/gta5/freedomtower.rpf/robbbs_wtc_int_office_01_dlc.ytyp</filename>
-      <fileType>DLC_ITYP_REQUEST</fileType>
-      <locked value="true" />
-      <disabled value="true" />
-      <persistent value="true" />
+      <filename>dlc_freedomtower:/%PLATFORM%/levels/gta5/freedomtower_metadata.rpf</filename>
+      <fileType>RPF_FILE</fileType>
+      <overlay value="false" />
+      <disabled value="false" />
+      <persistent value="false" />
+      <contents>CONTENTS_DLC_MAP_DATA</contents>
     </Item>
   </dataFiles>
   <contentChangeSets>
     <Item>
-      <changeSetName>freedomtower_AUTOGEN</changeSetName>
-      <filesToDisable />
+      <changeSetName>CCS_freedomtower_NG_STREAMING_MAP</changeSetName>
       <filesToEnable>
-        <Item>dlc_freedomtower:/x64/levels/gta5/freedomtower.rpf</Item>
-        <Item>dlc_freedomtower:/x64/levels/gta5/freedomtower.rpf/one_wtc.ytyp</Item>
-        <Item>dlc_freedomtower:/x64/levels/gta5/freedomtower.rpf/one_wtc_acqua.ytyp</Item>
-        <Item>dlc_freedomtower:/x64/levels/gta5/freedomtower.rpf/one_wtc_plaza.ytyp</Item>
-        <Item>dlc_freedomtower:/x64/levels/gta5/freedomtower.rpf/robbbs_int_office_03c_dlc.ytyp</Item>
-        <Item>dlc_freedomtower:/x64/levels/gta5/freedomtower.rpf/robbbs_wtc_appartment_01_dlc.ytyp</Item>
-        <Item>dlc_freedomtower:/x64/levels/gta5/freedomtower.rpf/robbbs_wtc_appartment_02_dlc.ytyp</Item>
-        <Item>dlc_freedomtower:/x64/levels/gta5/freedomtower.rpf/robbbs_wtc_appartment_03_dlc.ytyp</Item>
-        <Item>dlc_freedomtower:/x64/levels/gta5/freedomtower.rpf/robbbs_wtc_appartment_04_dlc.ytyp</Item>
-        <Item>dlc_freedomtower:/x64/levels/gta5/freedomtower.rpf/robbbs_wtc_dt1_11_interior_0_dt1_11_carpark.ytyp</Item>
-        <Item>dlc_freedomtower:/x64/levels/gta5/freedomtower.rpf/robbbs_wtc_emissive.ytyp</Item>
-        <Item>dlc_freedomtower:/x64/levels/gta5/freedomtower.rpf/robbbs_wtc_garageprop.ytyp</Item>
-        <Item>dlc_freedomtower:/x64/levels/gta5/freedomtower.rpf/robbbs_wtc_hall_mlo.ytyp</Item>
-        <Item>dlc_freedomtower:/x64/levels/gta5/freedomtower.rpf/robbbs_wtc_hall_prop.ytyp</Item>
-        <Item>dlc_freedomtower:/x64/levels/gta5/freedomtower.rpf/robbbs_wtc_int_office_01_dlc.ytyp</Item>
+        <Item>dlc_freedomtower:/%PLATFORM%/levels/gta5/freedomtower.rpf</Item>
+        <Item>dlc_freedomtower:/%PLATFORM%/levels/gta5/freedomtower_metadata.rpf</Item>
       </filesToEnable>
-      <txdToLoad />
-      <txdToUnload />
-      <residentResources />
-      <unregisterResources />
-      <requiresLoadingScreen value="false" />
+      <executionConditions>
+        <activeChangesetConditions />
+        <genericConditions>$level=MO_JIM_L11</genericConditions>
+      </executionConditions>
     </Item>
   </contentChangeSets>
   <patchFiles />

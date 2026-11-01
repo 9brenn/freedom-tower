@@ -1,49 +1,37 @@
-KONTROLA TECHNICZNA PACZKI RC2
+RC3 — PRZEBUDOWA PAKIETU MAPOWEGO
 
-Wejście: 2 części 7z, 44 108 308 bajtów łącznie; CRC archiwum 7z poprawne.
-Wewnętrzny RAR rozpakowano bez błędów odczytu/dekompresji.
-123 pliki danych poza Lua/projektem: 122 odczytano; 1 wadliwy XML scenariuszy.
-Binarne zasoby GTA: brak błędów odczytu CodeWalker.
+Nowy układ:
+- EXTRACONTENT_LEVEL_PACK, isLevelPack=true;
+- GROUP_UPDATE_STREAMING zamiast wymuszania definicji w GROUP_STARTUP;
+- freedomtower.rpf: 40 YDR, 1 YDD, 14 YBN, 2 YND = 57 plików;
+- freedomtower_metadata.rpf: 41 YMAP, 14 YTYP i manifest = 56 plików;
+- archiwum metadanych oznaczone CONTENTS_DLC_MAP_DATA;
+- brak bezpośrednich DLC_ITYP_REQUEST dla plików zarządzanych przez manifest.
 
-Wynik: dlc.rpf z wewnętrznym freedomtower.rpf, 113 plików w mapowym RPF.
-41 YMAP, 40 YDR, 1 YDD, 14 YTYP, 14 YBN, 2 YND, 1 scalony YMF.
-Wszystkie modele YDR/YDD i kolizje YBN zachowały oryginalne bajty.
-Rejestracja DLC: 1 archiwum RPF_FILE i 14 DLC_ITYP_REQUEST; ścieżki istnieją.
-Scalony _manifest.ymf: 17 wpisów map i 8 własnych wpisów wnętrz (Agency dostarcza gra).
-Usunięto kopię sf_dlc_int_01_sec.ytyp i jej ponowną rejestrację.
-Stockowe biuro Agency nadal korzysta z oryginalnego mpsecurity.
-Przyczyna crasha RC1 niepotwierdzona; RC2 wymaga testu w grze.
+Uzasadnienie: struktura map Dlc Pack Creator oraz kod natywny FiveM,
+który po wczytaniu manifestu usuwa wcześniejsze wymuszone żądania YTYP.
+Single Player nie dostarcza tego mechanizmu naprawczego FiveM.
+To konkretna różnica sposobu ładowania; bez testu w grze nie ustala dokładnej
+przyczyny zgłoszonej awarii ani nie dowodzi jej usunięcia w RC3.
 
-9 umieszczonych MLO: 4 apartamenty, 3 biura, hol i garaż.
+Dane zasobów:
+- wszystkie 113 nazw zasobów RC2 zachowane;
+- wszystkie 41 YMAP, modele, kolizje i węzły drogowe zachowane bajtowo;
+- dziewięć rozmieszczeń MLO zachowanych;
+- w dwóch YTYP wyczyszczono dokładnie sześć martwych physicsDictionary:
+  onewtc, lobby_ascensori, lobby_mirror, lobby_luci, lobby_quadri,
+  impexp_roundlights (z oryginalnymi prefiksami robbbs_wtc_).
+Te drawables nie mają własnego YBN ani osadzonego Bound. Istniejące kolizje
+world-space wieżowca i holu MLO zachowano bez zmian.
 
-Zmiany:
-- cztery odwołania MLO do kolizji vanilla skierowano do dostarczonych YBN;
-- granice ośmiu własnych MLO obliczono z poprawnych granic pomieszczeń;
-- ujednolicono niespójne nazwy CMapTypes i usunięto zdublowaną definicję shell;
-- zachowano zależności oryginalnych YMF, dodano wykryte własne zależności;
-- w biurach wybrano istniejące zgodne zestawy krzeseł/dekoracji;
-- dodano metadane DLC Single Player i opcjonalny loader MP Maps.
+Weryfikacja:
+- ponowny odczyt trzech RPF, zasobów i kompletności ścieżek;
+- niezależny dekoder RPF potwierdza rozdzielenie 57/56 zasobów;
+- binarny ponowny eksport potwierdza wyłącznie sześć zmian physicsDictionary;
+- 42 drawables/390 geometrii: poprawne indeksy, stride, shader IDs i liczniki;
+- oryginalne oraz RC2 YMAP spełniają dwa znane ograniczenia poprawiane przez
+  FiveM: flaga wnętrza i numStreetLights <= liczba pozycji; nie zmieniano ich;
+- nie wykryto lokalnych cykli zależności YTYP ani hierarchii LOD.
 
-Porównanie XML zmian z niezależnym odczytem ich binarnego zapisu: 0 różnic
-semantycznych. Odczyt obu zagnieżdżonych RPF niezależnym parserem CodeWalker:
-RPF_CHECK_OK. Własny odczyt wszystkich wpisów RPF zgadza się bajt w bajt
-z danymi przed pakowaniem. Kompilacja opcjonalnego loadera: 0 błędów/ostrzeżeń.
-Sprawdzono indeksy portali i przypisań do pomieszczeń, brak duplikatów
-archetypów oraz zgodność wybranych entity sets.
-
-Nie instalowano FiveM fxmanifest.lua, pliku projektu 1.cwproj ani wadliwego
-sp_manifest_1604.ymt. Trzy pliki scenariuszy NPC (downtown.ymt,
-downtown_construction_site.ymt, pillbox_hill.ymt) pozostają poza paczką DLC;
-nie zweryfikowano ich integracji z aktualną globalną bazą scenariuszy SP.
-Sześć oryginalnych manifestów YMF scalono w jeden _manifest.ymf.
-
-Znane ograniczenia: brak gtxd.meta w źródle; zewnętrzne tekstury i modele
-GTA Online muszą pochodzić z gry; wymagany wariant MP Maps w Story Mode.
-Bez testu w uruchomionej grze nie potwierdzono wyglądu, kolizji podczas
-poruszania się, stabilności ani zgodności z innymi modami i misjami.
-
-Narzędzia: CodeWalker.Core, commit 485d56bec00262ed7fa472261cce7bbc6202b96e;
-własny writer RPF7 OPEN sprawdzony parserem CodeWalker; py7zr/libarchive.
-Odniesienia: https://github.com/dexyfex/CodeWalker
-https://github.com/DurtyFree/gta-v-data-dumps
-https://github.com/citizenfx/natives
+Test w uruchomionym GTA V: NIE WYKONANY. RC1/RC2: crash potwierdzony przez
+użytkownika. RC3: brak wyniku testu w grze w chwili przygotowania paczki.

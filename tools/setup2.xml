@@ -1,21 +1,56 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <SSetupData>
   <deviceName>dlc_freedomtower</deviceName>
   <datFile>content.xml</datFile>
-  <timeStamp>01/01/2026 00:00:00</timeStamp>
+  <timeStamp>11/01/2026 12:00:00</timeStamp>
   <nameHash>freedomtower</nameHash>
+  <contentChangeSets />
   <contentChangeSetGroups>
     <Item>
-      <NameHash>GROUP_STARTUP</NameHash>
+      <NameHash>GROUP_EARLY_ON</NameHash>
+      <ContentChangeSets />
+    </Item>
+    <Item>
+      <NameHash>GROUP_TITLEUPDATE_STARTUP</NameHash>
+      <ContentChangeSets />
+    </Item>
+    <Item>
+      <NameHash>GROUP_UPDATE_STREAMING</NameHash>
       <ContentChangeSets>
-        <Item>freedomtower_AUTOGEN</Item>
+        <Item>CCS_freedomtower_NG_STREAMING_MAP</Item>
       </ContentChangeSets>
     </Item>
+    <Item>
+      <NameHash>GROUP_UPDATE_TEXT</NameHash>
+      <ContentChangeSets />
+    </Item>
+    <Item>
+      <NameHash>GROUP_UPDATE_DLC_PATCH</NameHash>
+      <ContentChangeSets />
+    </Item>
+    <Item>
+      <NameHash>GROUP_UPDATE_DLC_METADATA</NameHash>
+      <ContentChangeSets />
+    </Item>
+    <Item>
+      <NameHash>GROUP_UPDATE_WEAPON_PATCH</NameHash>
+      <ContentChangeSets />
+    </Item>
+    <Item>
+      <NameHash>GROUP_STARTUP</NameHash>
+      <ContentChangeSets />
+    </Item>
+    <Item>
+      <NameHash>GROUP_ON_DEMAND</NameHash>
+      <ContentChangeSets />
+    </Item>
   </contentChangeSetGroups>
-  <type>EXTRACONTENT_COMPAT_PACK</type>
+  <startupScript />
+  <scriptCallstackSize value="0" />
+  <type>EXTRACONTENT_LEVEL_PACK</type>
   <order value="10000" />
   <minorOrder value="0" />
-  <isLevelPack value="false" />
+  <isLevelPack value="true" />
   <dependencyPackHash />
   <requiredVersion />
   <subPackCount value="0" />
