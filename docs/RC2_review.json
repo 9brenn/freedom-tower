@@ -1,0 +1,17 @@
+{
+  "compared_to": "Freedom_Tower_GTA_V_Legacy_RC1.zip",
+  "comparison_source": "actual ZIP DLC RPF extracted with RPF7 reader",
+  "rc1_inner_resources": 114,
+  "rc2_inner_resources": 113,
+  "removed_inner_resources": ["sf_dlc_int_01_sec.ytyp"],
+  "changed_inner_resources": ["_manifest.ymf"],
+  "added_inner_resources": [],
+  "all_other_resources_byte_identical": true,
+  "all_nine_placed_mlo_ymaps_byte_identical": true,
+  "setup2_byte_identical": true,
+  "content_changes_only_stock_ytyp_registration_and_enable_removal": true,
+  "manifest_changes_only_stock_ytyp_dependencies_and_stock_interior_registration_removal": true,
+  "office02_dependency_on_stock_mpsecurity_ytyp_preserved": true,
+  "game_runtime_tested": false,
+  "release_status": "compatibility candidate; no confirmed crash root cause"
+}

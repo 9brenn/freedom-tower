@@ -1,16 +1,22 @@
 """Build preparation for the supplied Robbbs3D FiveM map. Original files untouched.
 Requires XML exports from CodeWalker and a CLI capable of `compile xml rsc/pso out`.
 """
-import copy,hashlib,json,math,shutil,subprocess,sys
+import copy,hashlib,json,math,os,shutil,subprocess,sys
 from pathlib import Path
 import xml.etree.ElementTree as E
 BASE=Path('/workspace/conversion')
 SRC=BASE/'source/extracted/Robbbs3D - freedom_tower/stream'
 XML=BASE/'reports/xml'
-STAGE=BASE/'stage';STAGE.mkdir(exist_ok=True)
-PATCH=BASE/'patched-xml';PATCH.mkdir(exist_ok=True)
+BUILD=Path(os.environ.get('FREEDOM_TOWER_BUILD_DIR',str(BASE/'rc2')))
+BUILD.mkdir(parents=True,exist_ok=True)
+STAGE=BUILD/'stage';STAGE.mkdir(exist_ok=True)
+PATCH=BUILD/'patched-xml';PATCH.mkdir(exist_ok=True)
+REPORTS=BUILD/'reports';REPORTS.mkdir(exist_ok=True)
+EXTERNAL_YTYPS={'sf_dlc_int_01_sec'}
 CLI=['/workspace/tools/dotnet/dotnet',str(BASE/'auditor/bin/Release/net8.0/Auditor.dll')]
-changes=[]
+changes=[{'file':'sf_dlc_int_01_sec.ytyp','field':'packaged stock definitions','after':'use installed mpsecurity YTYP; omit duplicate registration and interior manifest'}]
+# The stage is generated; remove stale stock copies when rerunning this build.
+for stock in EXTERNAL_YTYPS:(STAGE/(stock+'.ytyp')).unlink(missing_ok=True)
 def save_xml(root,path):
  E.indent(root,space=' ');E.ElementTree(root).write(path,encoding='UTF-8',xml_declaration=True)
 def compile_xml(root,name,fmt='rsc'):
@@ -23,6 +29,7 @@ def h(name):
   n=(n+c)&0xffffffff;n=(n+(n<<10))&0xffffffff;n^=n>>6
  n=(n+(n<<3))&0xffffffff;n^=n>>11;n=(n+(n<<15))&0xffffffff;return n
 for f in SRC.iterdir():
+ if f.stem in EXTERNAL_YTYPS and f.suffix=='.ytyp':continue
  if f.suffix not in ('.cwproj','.ymf','.ymt','.ynd'):shutil.copy2(f,STAGE/f.name.lower())
 # Path nodes are registered separately; scenario source is retained separately, not
 # installed as a global legacy-1604 manifest over a modern game configuration.
@@ -64,7 +71,7 @@ for f in sorted(XML.glob('*.ytyp.xml')):
      a.find(tag).attrib={k:format(v,'.9g') for k,v in zip('xyz',vec)}
     a.find('bsRadius').set('value',format(rad,'.9g'));changed=True
     changes.append({'file':name,'field':an+'.bounds','reason':'replace zero culling bounds with finite room union'})
-   mlos.append((name[:-5],a))
+   if name[:-5] not in EXTERNAL_YTYPS:mlos.append((name[:-5],a))
  roots[name[:-5]]=root
  if changed:compile_xml(root,name)
 # Merge existing real game YTYP dependencies, including original DLC props.
@@ -77,6 +84,7 @@ for f in sorted(XML.glob('*.ymf.xml')):
  for tag,key in [('imapDependencies_2','imapName'),('itypDependencies_2','itypName')]:
   for item in root.findall('./'+tag+'/Item'):
    k=item.findtext(key)
+   if tag=='itypDependencies_2' and k in EXTERNAL_YTYPS:continue
    if k not in merged[tag]:merged[tag][k]=copy.deepcopy(item)
    else:
     a=merged[tag][k].find('itypDepArray');existing={h(i.text) for i in a}
@@ -132,7 +140,7 @@ for mapname,selections in {
   for selection in selections:E.SubElement(arr,'Item').text=selection
  compile_xml(r,mapname+'.ymap')
  changes.append({'file':mapname+'.ymap','field':'defaultEntitySets','after':selections})
-json.dump(changes,open(BASE/'reports/conversion_changes.json','w'),indent=2)
+json.dump(changes,open(REPORTS/'conversion_changes.json','w'),indent=2)
 # A complete input inventory permits proof that no models or interiors were dropped.
-json.dump([{ 'path':p.name,'bytes':p.stat().st_size,'sha256':hashlib.sha256(p.read_bytes()).hexdigest()} for p in sorted(SRC.iterdir())],open(BASE/'reports/source_inventory.json','w'),indent=2)
+json.dump([{ 'path':p.name,'bytes':p.stat().st_size,'sha256':hashlib.sha256(p.read_bytes()).hexdigest()} for p in sorted(SRC.iterdir())],open(REPORTS/'source_inventory.json','w'),indent=2)
 print('Prepared',len(list(STAGE.iterdir())),'files;',len(changes),'changes; MLOs',len(mlos))

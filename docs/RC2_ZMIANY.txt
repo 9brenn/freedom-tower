@@ -1,0 +1,18 @@
+RC2 — KANDYDAT POPRAWKI ZGODNOŚCI, DO TESTU W GTA V
+
+Zgłoszenie: GTA V Legacy 1.0.3889.0 wyłącza się bez komunikatu podczas
+ładowania Story Mode po instalacji RC1, bez loadera DLL.
+Przyczyna crasha nie została potwierdzona.
+
+RC2 usuwa z dodatku kopię sf_dlc_int_01_sec.ytyp (312 stockowych archetypów)
+oraz jej rejestrację DLC_ITYP_REQUEST i zdublowane wpisy manifestu.
+Biuro Agency pozostaje na swoim miejscu; wykorzystuje oryginalne mpsecurity.
+Wszystkie 9 map rozmieszczających wnętrza i wszystkie modele są identyczne
+bajtowo z RC1. Pozostałe ustawienia DLC, mapy, kolizje i loader nie zmieniają się.
+
+Sprawdzone: odczyt archiwów i zasobów, rejestracja 14 własnych YTYP,
+zachowanie zależności biura od mpsecurity i porównanie zasobów z RC1.
+Nie wykonano testu uruchomionej gry. RC2 nie jest potwierdzoną naprawą awarii.
+
+Najpierw sprawdź grę bez wpisu DLC. Potem testuj pełne RC2 bez loadera DLL.
+Zamknij grę przed podmianą dlc.rpf. Zachowaj wyłącznie jeden wpis freedomtower.

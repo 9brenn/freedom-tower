@@ -1,8 +1,19 @@
-FREEDOM TOWER — GTA V LEGACY — RC1, WERSJA DO TESTU W GRZE
+FREEDOM TOWER — GTA V LEGACY — RC2, KANDYDAT POPRAWKI ZGODNOŚCI
 Model i wnętrza: Robbbs3D. Konwersja otrzymanego archiwum do add-on DLC.
 
 Zawartość: wieżowiec, plac, hol, garaż, 4 apartamenty i 3 biura.
 Brak systemu jeżdżących wind. Modele wind w holu zostały zachowane.
+
+0. JEŚLI GRA ZAMYKAŁA SIĘ NA RC1
+Nie potwierdzono jeszcze przyczyny awarii. RC2 usuwa zbędną kopię stockowego
+biura Agency i jego ponowną rejestrację. Biuro nadal korzysta z mpsecurity gry.
+Najpierw usuń wpis freedomtower i sprawdź, czy Story Mode znów się wczytuje.
+Następnie zamknij grę, podmień cały plik dlc.rpf na RC2 i przywróć jeden wpis.
+Pierwszą próbę uruchomienia wykonaj bez FreedomTowerLegacy.dll i bez włączania
+map MP. To próba ładowania DLC; właściwy widok budynku wymaga punktu 3.
+Jeżeli Story Mode się wczyta, dopiero wtedy sprawdź budynek z włączonym MP Maps.
+Jeżeli nadal się zamyka, użyj oddzielnej małej paczki diagnostycznej i przekaż
+wynik prób. Nie zmieniaj przy tym gameconfig, limitów pamięci ani innych modów.
 
 1. WYMAGANIA
 - GTA V Legacy z zainstalowanymi oryginalnymi DLC co najmniej do The Contract
@@ -76,7 +87,7 @@ Nie instalowano go ani trzech powiązanych plików scenariuszy NPC jako globalne
 konfiguracji współczesnego GTA. Ruch NPC w przebudowanej okolicy wymaga testu.
 Zachowano obydwa dostarczone pliki węzłów drogowych YND.
 
-W tym środowisku nie ma uruchomionej gry GTA V. Paczka RC1 jest przygotowana
+W tym środowisku nie ma uruchomionej gry GTA V. Paczka RC2 jest przygotowana
 do testu w grze; nie stanowi potwierdzenia bezbłędnego działania w 100%.
 
 7. ODINSTALOWANIE

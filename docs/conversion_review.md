@@ -1,3 +1,5 @@
+> Historical static review of RC1. RC1 subsequently crashed during Story Mode loading on a user installation. See [RC2 changes](RC2_ZMIANY.txt) for the compatibility candidate; game testing is still required.
+
 # Independent conversion review
 
 Reviewed tools/prepare.py and /workspace/conversion/reports/converted-xml.

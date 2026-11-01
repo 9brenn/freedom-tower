@@ -1,15 +1,19 @@
-KONTROLA TECHNICZNA PACZKI RC1
+KONTROLA TECHNICZNA PACZKI RC2
 
 Wejście: 2 części 7z, 44 108 308 bajtów łącznie; CRC archiwum 7z poprawne.
 Wewnętrzny RAR rozpakowano bez błędów odczytu/dekompresji.
 123 pliki danych poza Lua/projektem: 122 odczytano; 1 wadliwy XML scenariuszy.
 Binarne zasoby GTA: brak błędów odczytu CodeWalker.
 
-Wynik: dlc.rpf z wewnętrznym freedomtower.rpf, 114 plików w mapowym RPF.
-41 YMAP, 40 YDR, 1 YDD, 15 YTYP, 14 YBN, 2 YND, 1 scalony YMF.
+Wynik: dlc.rpf z wewnętrznym freedomtower.rpf, 113 plików w mapowym RPF.
+41 YMAP, 40 YDR, 1 YDD, 14 YTYP, 14 YBN, 2 YND, 1 scalony YMF.
 Wszystkie modele YDR/YDD i kolizje YBN zachowały oryginalne bajty.
-Rejestracja DLC: 1 archiwum RPF_FILE i 15 DLC_ITYP_REQUEST; ścieżki istnieją.
-Scalony _manifest.ymf: 17 wpisów map i 9 wpisów wnętrz.
+Rejestracja DLC: 1 archiwum RPF_FILE i 14 DLC_ITYP_REQUEST; ścieżki istnieją.
+Scalony _manifest.ymf: 17 wpisów map i 8 własnych wpisów wnętrz (Agency dostarcza gra).
+Usunięto kopię sf_dlc_int_01_sec.ytyp i jej ponowną rejestrację.
+Stockowe biuro Agency nadal korzysta z oryginalnego mpsecurity.
+Przyczyna crasha RC1 niepotwierdzona; RC2 wymaga testu w grze.
+
 9 umieszczonych MLO: 4 apartamenty, 3 biura, hol i garaż.
 
 Zmiany:

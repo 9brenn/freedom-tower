@@ -110,13 +110,6 @@
       <disabled value="true" />
       <persistent value="true" />
     </Item>
-    <Item>
-      <filename>dlc_freedomtower:/x64/levels/gta5/freedomtower.rpf/sf_dlc_int_01_sec.ytyp</filename>
-      <fileType>DLC_ITYP_REQUEST</fileType>
-      <locked value="true" />
-      <disabled value="true" />
-      <persistent value="true" />
-    </Item>
   </dataFiles>
   <contentChangeSets>
     <Item>
@@ -138,7 +131,6 @@
         <Item>dlc_freedomtower:/x64/levels/gta5/freedomtower.rpf/robbbs_wtc_hall_mlo.ytyp</Item>
         <Item>dlc_freedomtower:/x64/levels/gta5/freedomtower.rpf/robbbs_wtc_hall_prop.ytyp</Item>
         <Item>dlc_freedomtower:/x64/levels/gta5/freedomtower.rpf/robbbs_wtc_int_office_01_dlc.ytyp</Item>
-        <Item>dlc_freedomtower:/x64/levels/gta5/freedomtower.rpf/sf_dlc_int_01_sec.ytyp</Item>
       </filesToEnable>
       <txdToLoad />
       <txdToUnload />
